@@ -243,6 +243,15 @@
             <input type="text" id="postTitle" placeholder="Nhập tên mẫu">
         </div>
         <div class="form-group">
+            <label for="postCategory">Loại sản phẩm:</label>
+            <select id="postCategory" class="form-control">
+                <option value="Nail chân">Nail chân</option>
+                <option value="Nail tay">Nail tay</option>
+                <option value="Uốn mi">Uốn mi</option>
+                <option value="Da mặt">Da mặt</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="postPriceOld">Giá cũ:</label>
             <input type="text" id="postPriceOld" placeholder="Nhập giá cũ (VD: 300.000 đ)">
         </div>
@@ -278,6 +287,7 @@
         const postList = document.getElementById('postList');
         // 20/04: TANNV thêm mô tả
         const postDescription = document.getElementById('postDescription');
+        const postCategory = document.getElementById('postCategory');
 
         // Lấy danh sách bài viết từ LocalStorage
         let posts = JSON.parse(localStorage.getItem('posts')) || [];
@@ -305,10 +315,13 @@
             const priceNew = postPriceNew.value.trim();
             const description = postDescription.value.trim();
             const imageSrc = previewImage.src;
+            const category = postCategory.value; // Lấy giá trị loại sản phẩm
 
-            if (!title || !priceOld || !priceNew || !imageSrc || !description) {
-            alert('Vui lòng nhập đầy đủ thông tin và chọn hình ảnh!');
-            return;
+            if (!title || !priceOld || !priceNew || !imageSrc || !description || !category) {
+        alert('Vui lòng nhập đầy đủ thông tin và chọn hình ảnh!');
+        return;
+    
+
         }
 
             // Tính toán phần trăm giảm giá
@@ -316,7 +329,8 @@
 
             // Thêm bài viết vào danh sách
             // const newPost = { title, priceOld, priceNew, salePercent: `${salePercent}%`, imageSrc };
-            const newPost = { title, priceOld, priceNew, salePercent: `${salePercent}%`, imageSrc, description };
+             // Thêm bài viết vào danh sách
+            const newPost = { title, priceOld, priceNew, salePercent: `${salePercent}%`, imageSrc, description, category };
             posts.push(newPost);
 
             // Lưu danh sách bài viết vào LocalStorage
@@ -332,6 +346,7 @@
             previewImage.src = '';
             postDescription.value = '';
             previewImage.style.display = 'none';
+            postCategory.value = 'Nail chân'; // Reset về giá trị mặc định
 
             alert('Bài viết đã được đăng thành công!');
         });
@@ -365,6 +380,7 @@ function updatePostList() {
             <p>Giá cũ: ${post.priceOld}</p>
             <p>Giá giảm: ${post.priceNew}</p>
             <p>Giảm: ${post.salePercent}</p>
+            <p>Loại sản phẩm: ${post.category}</p>
             <p>Mô tả: ${post.description}</p>
             <button class="btn-delete" data-index="${index}">Xóa</button>
         `;
