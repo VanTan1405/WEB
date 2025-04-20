@@ -68,7 +68,7 @@
     .message-icon:hover {
         background-color: #0056b3;
     }
-
+    /* TANNV: Reponsive trên điện thoại  */
     </style>
 </head>
 
@@ -185,18 +185,23 @@
                             <li class="sub-nav__item">
                                 <a href="#" class="sub-nav__link heading" data-category="all">Tất cả</a>
                             </li>
+                        </ul>
+                        <ul class="sub-nav">
                             <li class="sub-nav__item">
                                 <a href="#" class="sub-nav__link heading" data-category="Nail chân">Nail chân</a>
                             </li>
+                        </ul>
+                        <ul class="sub-nav">
                             <li class="sub-nav__item">
                                 <a href="#" class="sub-nav__link heading" data-category="Nail tay">Nail tay</a>
                             </li>
-                            <li class="sub-nav__item">
-                                <a href="#" class="sub-nav__link heading" data-category="Nước hoa">Nước hoa</a>
-                            </li>
+                        </ul>
+                        <ul class="sub-nav">
                             <li class="sub-nav__item">
                                 <a href="#" class="sub-nav__link heading" data-category="Uốn mi">Uốn mi</a>
                             </li>
+                        </ul>
+                        <ul class="sub-nav">
                             <li class="sub-nav__item">
                                 <a href="#" class="sub-nav__link heading" data-category="Da mặt">Da mặt</a>
                             </li>
@@ -1327,74 +1332,6 @@
 const postContainer = document.querySelector('.main__tabnine .row'); // Container hiển thị sản phẩm
 const posts = JSON.parse(localStorage.getItem('posts')) || []; // Lấy dữ liệu từ LocalStorage
 const categoryFilter = document.getElementById('categoryFilter'); // Dropdown lọc loại sản phẩm
-
-// // Hàm hiển thị sản phẩm
-// function displayPosts(filteredPosts) {
-//     postContainer.innerHTML = ''; // Xóa nội dung cũ
-//     filteredPosts.forEach(post => {
-//         const postItem = document.createElement('div');
-//         postItem.className = 'col l-2 m-4 s-6';
-//         postItem.innerHTML = `
-//             <div class="product">
-//                 <div class="product__avt" style="background-image: url(${post.imageSrc});">
-//                 </div>
-//                 <div class="product__info">
-//                     <h3 class="product__name">${post.title}</h3>
-//                     <div class="product__price">
-//                         <div class="price__old">${post.priceOld}</div>
-//                         <div class="price__new">${post.priceNew} <span class="price__unit">đ</span></div>
-//                     </div>
-//                     <div class="product__sale">
-//                         <span class="product__sale-percent">${post.salePercent}</span>
-//                         <span class="product__sale-text">Giảm</span>
-//                     </div>
-//                 </div>
-//                 <a href="product.html" class="viewDetail">Xem chi tiết</a>
-//                 <a href="cart.html" class="addToCart">Thêm vào giỏ</a>
-//             </div>
-//         `;
-//         postContainer.appendChild(postItem);
-//     });
-// }
-
-// // Hiển thị tất cả sản phẩm ban đầu
-// displayPosts(posts);
-
-// // Lọc sản phẩm khi thay đổi loại
-// categoryFilter.addEventListener('change', function () {
-//     const selectedCategory = categoryFilter.value;
-//     if (selectedCategory === 'all') {
-//         displayPosts(posts); // Hiển thị tất cả sản phẩm
-//     } else {
-//         const filteredPosts = posts.filter(post => post.category === selectedCategory);
-//         displayPosts(filteredPosts); // Hiển thị sản phẩm theo loại
-//     }
-// });
-
-// const subNavLinks = document.querySelectorAll('.sub-nav__link');
-
-// // Xử lý sự kiện click vào từng mục
-// subNavLinks.forEach(link => {
-//     link.addEventListener('click', function (e) {
-//         e.preventDefault();
-
-//         // Xóa trạng thái active của tất cả các link
-//         subNavLinks.forEach(link => link.classList.remove('active'));
-
-//         // Thêm trạng thái active cho link được nhấn
-//         this.classList.add('active');
-
-//         // Lọc sản phẩm theo loại
-//         const selectedCategory = this.textContent.trim();
-//         if (selectedCategory === 'Tất cả') {
-//             displayPosts(posts); // Hiển thị tất cả sản phẩm
-//         } else {
-//             const filteredPosts = posts.filter(post => post.category === selectedCategory);
-//             displayPosts(filteredPosts); // Hiển thị sản phẩm theo loại
-//         }
-//     });
-// });
-
 
 // ---
 const subNavLinks = document.querySelectorAll('.sub-nav__link'); // Lấy tất cả các liên kết trong sub-nav
